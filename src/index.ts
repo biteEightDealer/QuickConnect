@@ -3,7 +3,7 @@ import { ipcMain } from "electron";
 
 const serverService = new ServerService();
 
-ipcMain.handle("create-server", async (event, server) => {
+ipcMain.handle("db:create-server", async (event, server) => {
     try {
         await serverService.createServer(server);
         return { success: true };

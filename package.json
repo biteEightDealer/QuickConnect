@@ -11,7 +11,7 @@
    "scripts": {
       "build": "tsc",
       "watch": "tsc -w",
-      "start": "npm run build && electron ."
+      "start": "electron src/main/main.js"
    },
    "dependencies": {
       "reflect-metadata": "^0.2.2",
