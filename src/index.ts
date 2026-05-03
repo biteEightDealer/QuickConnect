@@ -5,10 +5,15 @@ const serverService = new ServerService();
 
 ipcMain.handle("db:create-server", async (event, server) => {
     try {
-        await serverService.createServer(server);
-        return { success: true };
+        const serverCreate = await serverService.createServer(server);
+        if(serverCreate != null) {
+            console.log("Server created");
+        }else{
+            console.log("Server not created");
+        }
+        return { success: true};
     } catch (error) {
         console.error("Error creating server:", error);
-        return { success: false, error: error.message };
+        return { success: false};
     }
 });

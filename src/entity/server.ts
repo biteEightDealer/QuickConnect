@@ -4,15 +4,15 @@ import { Entity, PrimaryGeneratedColumn, Column, Not } from "typeorm"
 export class Server {
 
     @PrimaryGeneratedColumn()
-    id: number
+    id!: number
 
     @Column()
-    name: string
+    name!: string
 
     @Column()
-    ip: number
+    ip!: number
 
     @Column()
-    category: string
+    category!: string
 
 }

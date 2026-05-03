@@ -8,8 +8,21 @@ export const repoServer = {
         const srv = serverRepository.create(server);
         return await serverRepository.save(srv);
     },
-    async findAll(){
-        return await serverRepository.find();
+    async findAll(page: number = 1, limit: number = 5) {
+        const [data, total] = await serverRepository.findAndCount({
+            order: {
+                id: "ASC"
+            },
+            skip: (page - 1) * limit,
+            take: limit
+        });
+        return {
+            data,
+            total,
+            page,
+            limit,
+            totalPages: Math.ceil(total / limit)
+        }
     },
     async findById(id: number){
         return await serverRepository.findOneBy({id});
